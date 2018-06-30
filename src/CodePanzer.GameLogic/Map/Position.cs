@@ -5,7 +5,7 @@ using System.Text;
 
 namespace CodePanzer.GameLogic.Map
 {
-    internal class Position : IPosition
+    public class Position : IPosition
     {
         public Position(int x, int y)
         {
@@ -16,5 +16,10 @@ namespace CodePanzer.GameLogic.Map
         public int X { get; set; }
 
         public int Y { get; set; }
+
+        public override string ToString()
+        {
+            return $"{X}:{Y}";
+        }
     }
 }

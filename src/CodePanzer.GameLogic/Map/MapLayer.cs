@@ -24,14 +24,14 @@ namespace CodePanzer.GameLogic.Map
         public void MoveElement(IPosition prevPosition, IPosition newPosition)
         {
             //Вышли за пределы карты
-            if (newPosition.X < 0 || Width > newPosition.X)
+            if (newPosition.X < 0 || Width < newPosition.X)
                 throw new ArgumentException("Вышли за пределы карты X", nameof(newPosition.X));
-            if (newPosition.Y < 0 || Heigth > newPosition.Y)
+            if (newPosition.Y < 0 || Heigth < newPosition.Y)
                 throw new ArgumentException("Вышли за пределы карты Y", nameof(newPosition.Y));
 
-            var obj = _layerInfo[prevPosition.X, prevPosition.Y];
-            _layerInfo[newPosition.X, newPosition.Y] = obj;
-            _layerInfo[prevPosition.X, prevPosition.Y] = default(TLayerType);
+            var obj = _layerInfo[prevPosition.Y, prevPosition.X];
+            _layerInfo[newPosition.Y, newPosition.X] = obj;
+            _layerInfo[prevPosition.Y, prevPosition.X] = default(TLayerType);
 
         }
 

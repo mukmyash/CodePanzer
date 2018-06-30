@@ -12,12 +12,17 @@ namespace CodePanzer.Abstractions.Panzer
     {
         Guid UID { get; }
 
-        ushort Health { get; }
+        short Health { get; }
 
         ushort StepsPerRound { get; }
 
         ushort Damage { get; }
 
         CommanderType Type { get; }
+
+        /// <summary>
+        /// Текущее направление
+        /// </summary>
+        Direction CurrentDirection { get; }
     }
 }

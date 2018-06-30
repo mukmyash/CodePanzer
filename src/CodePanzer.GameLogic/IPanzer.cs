@@ -7,12 +7,12 @@ using System.Text;
 
 namespace CodePanzer.GameLogic
 {
-    interface IPanzer : IForce
+    public interface IPanzer : IForce
     {
         /// <summary>
         /// Здоровье
         /// </summary>
-        new ushort Health { get; set; }
+        new short Health { get; set; }
 
         /// <summary>
         /// Штраф за долгий алгоритм =)
@@ -37,7 +37,7 @@ namespace CodePanzer.GameLogic
         /// <summary>
         /// Текущее направление
         /// </summary>
-        Direction CurrentDirection { get; set; }
+        new Direction CurrentDirection { get; set; }
 
         /// <summary>
         /// Подготовка танка

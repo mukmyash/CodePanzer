@@ -1,24 +1,27 @@
 ﻿using CodePanzer.Abstractions.Map;
 using CodePanzer.Abstractions.Panzer;
+using CodePanzer.GameLogic.Map;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace CodePanzer.GameLogic
 {
-    public class Panzer : IPanzer
+    internal class Panzer : IPanzer
     {
         public IPanzerCommander PanzerComander { get; }
 
         public ushort Fine { get; set; }
 
-        public ushort Health { get; set; }
+        public short Health { get; set; }
 
         public ushort StepsPerRound { get; set; }
 
         public ushort Damage { get; set; }
 
-        public IPosition CurrentPosition { get; set; }
+
+        public Position CurrentPosition { get; set; }
+
         public Direction CurrentDirection { get; set; }
 
         public CommanderType Type => PanzerComander.Type;
@@ -41,7 +44,7 @@ namespace CodePanzer.GameLogic
 
         public void Init(IMap map, IPosition startPosition, Direction startDirection)
         {
-            CurrentPosition = startPosition;
+            CurrentPosition = startPosition as Position;
             CurrentDirection = startDirection;
 
             PanzerComander.Init(map, startPosition, startDirection);

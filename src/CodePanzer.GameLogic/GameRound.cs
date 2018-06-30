@@ -19,11 +19,12 @@ namespace CodePanzer.GameLogic
             _mapModifyer = mapModifyer;
         }
 
-        public void StartRound(IMap currentMap, IEnumerable<IPanzer> panzers)
+        public IDictionary<IPanzer, Intent> StartRound(IMap currentMap, IEnumerable<IPanzer> panzers)
         {
             var intents = GetIntents(currentMap, panzers);
             CulcFine(intents);
             _mapModifyer.Modify(currentMap as GameMap, intents);
+            return intents;
         }
 
         private void CulcFine(IDictionary<IPanzer, Intent> intents)
@@ -50,6 +51,21 @@ namespace CodePanzer.GameLogic
 
             foreach (var panzer in panzers)
             {
+                if (panzer.Health == 0)
+                {
+                    allIntents.Add(
+                        panzer,
+                        new Intent(
+                            panzer,
+                            new List<(double, CommanderCommand)>()
+                            {
+                                (0, CommanderCommand.Wait)
+                            }
+                        )
+                    );
+                    continue;
+                }
+
                 if (panzer.Fine > 0)
                 {
                     panzer.Fine--;

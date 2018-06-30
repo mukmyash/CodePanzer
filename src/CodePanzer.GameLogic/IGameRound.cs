@@ -6,6 +6,6 @@ namespace CodePanzer.GameLogic
 {
     internal interface IGameRound
     {
-        void StartRound(IMap currentMap, IEnumerable<IPanzer> panzers);
+        IDictionary<IPanzer, Intent> StartRound(IMap currentMap, IEnumerable<IPanzer> panzers);
     }
 }

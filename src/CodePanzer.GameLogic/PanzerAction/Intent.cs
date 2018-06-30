@@ -6,7 +6,7 @@ using System.Text;
 
 namespace CodePanzer.GameLogic.PanzerAction
 {
-    internal class Intent
+    public class Intent
     {
         public Intent(IPanzer panzer, IEnumerable<(double MillesecondsOnStep, CommanderCommand Command)> commandInfo)
         {

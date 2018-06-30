@@ -29,7 +29,14 @@ namespace CodePanzer.GameLogic.PanzerFactory
         /// <param name="map"></param>
         public void InitPosition(IMap map)
         {
-            _panzer.Init(map, new Position(0, 0), Direction.East);
+            for (int y = 0; y < map.Heigth; y++)
+                for (int x = 0; x < map.Width; x++)
+                {
+                    if (map.LocationOfForces[y, x] != null)
+                        continue;
+                    _panzer.Init(map, new Position(x, y), Direction.West);
+                    return;
+                }
         }
 
         public IPanzer GetResult()

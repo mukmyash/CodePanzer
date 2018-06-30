@@ -1,5 +1,6 @@
 ﻿using CodePanzer.Abstractions.Map;
 using CodePanzer.Abstractions.Panzer;
+using CodePanzer.GameLogic.Map;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -21,7 +22,10 @@ namespace CodePanzer.GameLogic.PanzerFactory
             builder.InitCharacteristics();
             builder.InitPosition(map);
 
-            return builder.GetResult();
+            var result = builder.GetResult();
+
+            (map.LocationOfForces as MapLayer<IForce>)[result.CurrentPosition.Y, result.CurrentPosition.X]  = result;
+            return result;
         }
-    }
+}
 }

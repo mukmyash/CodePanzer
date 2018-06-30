@@ -8,15 +8,15 @@ namespace Panzer.II
 {
     public class Panzer : PanzerCommanderDefaultType
     {
-        private Random _rnd;
+        private static Random _rnd = new Random();
         public override CommanderCommand GetCommand(IMap map, IPosition currentPosition, Direction currentDirection)
         {
-            return (CommanderCommand)_rnd.Next(0, 5);
+            return  (CommanderCommand)_rnd.Next(0, 5);
         }
 
         public override void Init(IMap map, IPosition startPosition, Direction currentDirection)
         {
-            _rnd = new Random(4);
+
         }
     }
 }

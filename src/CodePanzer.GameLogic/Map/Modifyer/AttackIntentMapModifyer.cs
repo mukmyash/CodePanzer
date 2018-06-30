@@ -24,21 +24,21 @@ namespace CodePanzer.GameLogic.Map.Modifyer
                 var (positionX, positionY) = CalcPosition(panzer.CurrentPosition, panzer.CurrentDirection, i);
 
                 //Вышли за пределы карты
-                if (positionX < 0 || _currentMap.Width > positionX)
+                if (positionX < 0 || _currentMap.Width <= positionX)
                     break;
-                if (positionY < 0 || _currentMap.Heigth > positionY)
+                if (positionY < 0 || _currentMap.Heigth <= positionY)
                     break;
 
-                var enemy = panzerLayer[positionX, positionY] as Panzer;
-                if (enemy != null)
+                var enemy = panzerLayer[positionY, positionX] as Panzer;
+                if (enemy != null && enemy.Health != 0)
                 {
-                    enemy.Health -= panzer.Damage;
+                    enemy.Health -= (short)panzer.Damage;
                     if (enemy.Health < 0)
                         enemy.Health = 0;
                     break;
                 }
 
-                var section = sectionLayer[positionX, positionY] as SectionBase;
+                var section = sectionLayer[positionY, positionX] as SectionBase;
                 if (!section.CanBuletThrought)
                 {
                     if (section.CanDestroy)

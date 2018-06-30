@@ -19,17 +19,17 @@ namespace CodePanzer.GameLogic.Map.Modifyer
             var (positionX, positionY) = ModifyPosition(panzer.CurrentPosition, panzer.CurrentDirection);
 
             //Вышли за пределы карты
-            if (positionX < 0 || _currentMap.Width > positionX)
+            if (positionX < 0 || _currentMap.Width <= positionX)
                 return;
-            if (positionY < 0 || _currentMap.Heigth > positionY)
+            if (positionY < 0 || _currentMap.Heigth <= positionY)
                 return;
 
             //В секцию невозможно встать
-            if (!sections[positionX, positionY].CanPositionTo)
+            if (!sections[positionY, positionX].CanPositionTo)
                 return;
 
             //Танка в области
-            if (enemies[positionX, positionY] != null)
+            if (enemies[positionY, positionX] != null)
                 return;
 
             enemies.MoveElement(
