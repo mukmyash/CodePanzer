@@ -15,6 +15,6 @@ namespace CodePanzer.GameLogic.Map.Sections
 
         public abstract bool CanBuletThrought { get; }
 
-        public abstract SectionType Type { get; };
+        public abstract SectionType Type { get; }
     }
 }
