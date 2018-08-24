@@ -32,7 +32,7 @@ namespace CodePanzer.GameLogic
         /// <summary>
         /// Текущая позиция
         /// </summary>
-        Position CurrentPosition { get; set; }
+        new IPosition CurrentPosition { get; set; }
 
         /// <summary>
         /// Текущее направление

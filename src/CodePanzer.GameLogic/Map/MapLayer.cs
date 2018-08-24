@@ -6,7 +6,7 @@ using System.Text;
 
 namespace CodePanzer.GameLogic.Map
 {
-    public class MapLayer<TLayerType> : ILayer<TLayerType>
+    internal class MapLayer<TLayerType> : ILayer<TLayerType>
     {
         private TLayerType[,] _layerInfo;
 

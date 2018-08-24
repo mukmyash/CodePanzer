@@ -14,7 +14,7 @@ namespace CodePanzer.GameLogic.PanzerFactory
         public PanzerBuilder(IPanzerCommander panzer)
         {
             if (panzer == null)
-                throw new ArgumentException("Panzer can't be null.", nameof(panzer));
+                throw new ArgumentException("Panzer commander can't be null.", nameof(panzer));
             _panzer = new Panzer(panzer);
         }
 
@@ -32,7 +32,11 @@ namespace CodePanzer.GameLogic.PanzerFactory
             for (int y = 0; y < map.Heigth; y++)
                 for (int x = 0; x < map.Width; x++)
                 {
+                    //Если уже кто-то там есть, то ни кого не устанавливаем
                     if (map.LocationOfForces[y, x] != null)
+                        continue;
+                    //Если в секцию невозможно разметить ни кого то ни чего и не делаем
+                    if (!map.Sections[x, y].CanPositionTo)
                         continue;
                     _panzer.Init(map, new Position(x, y), Direction.West);
                     return;

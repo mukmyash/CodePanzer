@@ -19,10 +19,8 @@ namespace CodePanzer.GameLogic
 
         public ushort Damage { get; set; }
 
-
-        public Position CurrentPosition { get; set; }
-
         public Direction CurrentDirection { get; set; }
+        public IPosition CurrentPosition { get; set; }
 
         public CommanderType Type => PanzerComander.Type;
 
@@ -36,6 +34,7 @@ namespace CodePanzer.GameLogic
                 return _uid;
             }
         }
+
 
         public Panzer(IPanzerCommander panzer)
         {

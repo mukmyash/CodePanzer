@@ -21,6 +21,11 @@ namespace CodePanzer.Abstractions.Panzer
         CommanderType Type { get; }
 
         /// <summary>
+        /// Текущая позиция
+        /// </summary>
+        IPosition CurrentPosition { get; }
+
+        /// <summary>
         /// Текущее направление
         /// </summary>
         Direction CurrentDirection { get; }

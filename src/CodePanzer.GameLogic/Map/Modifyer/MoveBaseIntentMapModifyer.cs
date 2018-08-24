@@ -36,8 +36,7 @@ namespace CodePanzer.GameLogic.Map.Modifyer
                 new Position(panzer.CurrentPosition.X, panzer.CurrentPosition.Y),
                 new Position(positionX, positionY));
 
-            panzer.CurrentPosition.X = positionX;
-            panzer.CurrentPosition.Y = positionY;
+            panzer.CurrentPosition = new Position(positionX, positionY);
         }
 
         protected abstract (int positionX, int positionY) ModifyPosition(IPosition currentPosition, Direction currentDirection);

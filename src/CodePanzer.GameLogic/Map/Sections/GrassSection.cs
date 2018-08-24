@@ -5,15 +5,12 @@ using System.Text;
 
 namespace CodePanzer.GameLogic.Map.Sections
 {
-    /// <summary>
-    /// Секция дороги
-    /// </summary>
-    internal class RoadSection : SectionBase
+    internal class GrassSection : SectionBase
     {
         public override bool IsDestroy
         {
             get => false;
-            set { throw new NotSupportedException("Невозможно разрушить дорогу"); }
+            set { throw new NotSupportedException("Невозможно разрушить траву"); }
         }
 
         public override bool CanDestroy => false;
@@ -22,6 +19,6 @@ namespace CodePanzer.GameLogic.Map.Sections
 
         public override bool CanBuletThrought => true;
 
-        public override SectionType Type => SectionType.Road;
+        public override SectionType Type => SectionType.Grass;
     }
 }

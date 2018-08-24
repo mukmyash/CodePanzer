@@ -1,4 +1,5 @@
-﻿using CodePanzer.GameLogic.Map.Modifyer;
+﻿using CodePanzer.GameLogic.Map.Generator;
+using CodePanzer.GameLogic.Map.Modifyer;
 using CodePanzer.GameLogic.PanzerFactory;
 using Microsoft.Extensions.DependencyInjection;
 using System;
@@ -11,6 +12,7 @@ namespace CodePanzer.GameLogic.Infrastructure
     {
         public static IServiceCollection AddGameLogic(this IServiceCollection services)
         {
+            services.AddTransient<IMapGenerator, FromFileMapGenerator>();
             services.AddTransient<IPanzerFactory, PanzerFactory.PanzerFactory>();
             services.AddTransient<IGameRound, GameRound>();
             services.AddTransient<IPanzerBuilderFactory, PanzerBuilderFactory>();

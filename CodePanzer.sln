@@ -21,7 +21,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{D477708A-E
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodePanzer.GameLogic.UnitTest", "test\CodePanzer.GameLogic.UnitTest\CodePanzer.GameLogic.UnitTest.csproj", "{43F4BF6A-A846-4FEA-9EF6-53046AAD566F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodePanzer.ConsoleDemo", "src\CodePanzer.ConsoleDemo\CodePanzer.ConsoleDemo.csproj", "{589FB6BE-CDD8-4BC9-955C-1489AF2E096E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodePanzer.ConsoleDemo", "src\CodePanzer.ConsoleDemo\CodePanzer.ConsoleDemo.csproj", "{589FB6BE-CDD8-4BC9-955C-1489AF2E096E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

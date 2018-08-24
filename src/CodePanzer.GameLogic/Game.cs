@@ -9,7 +9,6 @@ using System.Text;
 
 namespace CodePanzer.GameLogic
 {
-    public delegate void EndRoundEventHandler(IMap map, IDictionary<IPanzer, Intent> intents);
     internal class Game : IGame
     {
         public event EndRoundEventHandler EndRound;
@@ -39,7 +38,7 @@ namespace CodePanzer.GameLogic
 
         public void Start()
         {
-            while (_panzers.Where(n => n.Health > 0).Count()!=1)
+            while (_panzers.Where(n => n.Health > 0).Count() != 1)
             {
                 var intents = _gemeRound.StartRound(CurrentMap, _panzers);
                 EndRound?.Invoke(CurrentMap, intents);

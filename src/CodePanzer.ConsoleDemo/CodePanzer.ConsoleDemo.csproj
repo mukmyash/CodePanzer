@@ -15,4 +15,13 @@
     <ProjectReference Include="..\Panzer.II\Panzer.II.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="maps\10x10\5-DemoMap2.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="maps\10x10\5-DemoMap.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

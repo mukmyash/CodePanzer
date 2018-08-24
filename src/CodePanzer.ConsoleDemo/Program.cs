@@ -3,6 +3,7 @@ using CodePanzer.Abstractions.Panzer;
 using CodePanzer.GameLogic;
 using CodePanzer.GameLogic.Infrastructure;
 using CodePanzer.GameLogic.Map;
+using CodePanzer.GameLogic.Map.Generator;
 using Microsoft.Extensions.DependencyInjection;
 using Panzer.II;
 using System;
@@ -19,7 +20,7 @@ namespace CodePanzer.ConsoleDemo
             var services = new ServiceCollection();
             services.AddGameLogic();
             var game = services.BuildServiceProvider().GetRequiredService<IGame>();
-            var map = new MapFactory().GetMap();
+            var map = new MapFactory(new FromFileMapGenerator()).GetMap(10, 10, 5);
 
             var commander = new List<IPanzerCommander>()
             {
@@ -78,7 +79,7 @@ namespace CodePanzer.ConsoleDemo
                     else
                     {
                         var section = sections[y, x];
-                        lineString.Append(GetSymbolSection(section.Type));
+                        lineString.Append(GetSymbolSection(section.Type, section.IsDestroy));
                     }
                 }
                 yield return lineString.ToString();
@@ -101,18 +102,22 @@ namespace CodePanzer.ConsoleDemo
             }
         }
 
-        static char GetSymbolSection(SectionType sectionType)
+        static char GetSymbolSection(SectionType sectionType, bool isDestroy)
         {
             switch (sectionType)
             {
-                case SectionType.BrickWall:
-                    return '▒';
+                case SectionType.BrickWall when !isDestroy:
+                    return '+';
+                case SectionType.BrickWall when isDestroy:
+                    return '-';
                 case SectionType.IronWall:
-                    return '▓';
+                    return '#';
                 case SectionType.Road:
-                    return '░';
+                    return '=';
                 case SectionType.Water:
-                    return '0';
+                    return '~';
+                case SectionType.Grass:
+                    return '`';
                 default:
                     throw new NotSupportedException("Данный тип секции не поддерживается");
             }

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace CodePanzer.GameLogic.Map
 {
-    public class Position : IPosition
+    internal class Position : IPosition
     {
         public Position(int x, int y)
         {

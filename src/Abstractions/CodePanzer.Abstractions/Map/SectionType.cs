@@ -9,6 +9,7 @@ namespace CodePanzer.Abstractions.Map
         BrickWall,
         IronWall,
         Road,
-        Water
+        Water,
+        Grass
     }
 }
